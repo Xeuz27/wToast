@@ -1,0 +1,41 @@
+{
+	"name": "wtoast",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsup src/index.js --format cjs,esm --dts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Xeuz27/wToast.git"
+	},
+	"keywords": [
+		"utility",
+		"toast"
+	],
+	"prettier": {
+		"useTabs": true,
+		"trailingComma": "es5",
+		"tabWidth": 2,
+		"semi": false,
+		"singleQuote": false
+	},
+	"author": "Jesus Gutierrez",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Xeuz27/wToast/issues"
+	},
+	"homepage": "https://github.com/Xeuz27/wToast#readme",
+	"description": "",
+	"devDependencies": {
+		"eslint": "^8.57.1",
+		"standard": "^17.1.2",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"prettier": "^3.6.2"
+	}
+}
