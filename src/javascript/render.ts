@@ -1,4 +1,4 @@
-import type { Toast, ToastOptions } from "../types/toast"
+import type { Toast, ToastOptions, ToastStyles } from "../types/toast"
 import { $ } from "./helpers"
 import { addToastToState, getState, removeToastFromState } from "./state"
 
@@ -9,17 +9,43 @@ export function createContainer() {
 	return container
 }
 
+const setStyles = (styles: ToastStyles | undefined, element: HTMLElement) => {
+	for (var property in styles) {
+		const value = styles[property]
+		if (!value) return
+		element.style.setProperty(property, value)
+	}
+}
+
 export function renderToast(toast: Toast) {
 	if (toast.rendered) return
 	const container =
 		document.querySelector(".toast-container") || createContainer()
 
-	const div = document.createElement("div")
-	div.id = toast.id
-	div.textContent = toast.message
-	div.className = `toast toast-${toast.options.type} ${toast.options.className || ""}`
+	let toastContainer = document.createElement("div")
+	toastContainer.id = toast.id
+	toastContainer.className = `toast toast-${toast.options.type} ${toast.options.className || ""}`
 
-	container.appendChild(div)
+	const { styles } = toast.options
+	setStyles(styles, toastContainer)
+
+	if (toast.options.title) {
+		const toastContent = document.createElement("section")
+		toastContent.className = "toast-content"
+
+		const title = document.createElement("div")
+		title.className = "toast-title"
+		title.textContent = toast.options.title
+
+		toastContainer.appendChild(title)
+		toastContainer.appendChild(toastContent)
+	}
+
+	const toastMessage = document.createElement("p")
+	toastMessage.textContent = toast.message
+	toastContainer.appendChild(toastMessage)
+
+	container.appendChild(toastContainer)
 
 	toast.rendered = true
 }
@@ -30,10 +56,12 @@ export function createToast(message: string, options: ToastOptions = {}) {
 		id: id,
 		message: message,
 		options: {
+			title: options.title || "",
 			type: options.type || "default",
 			duration: options.duration || 3000,
 			className: options.className || "",
 			icon: options.icon || "",
+			styles: options.styles || {},
 		},
 		rendered: false,
 	}
@@ -52,6 +80,9 @@ export function updateToast(
 	const toast = toasts.find((t) => id === t.id)
 
 	const toastDiv = $(`${id}`)
+
+	const { styles } = toast!.options
+	setStyles({ ...styles, ...options.styles }, toastDiv!)
 
 	//prettier-ignore
 	toastDiv!.classList.replace(`toast-${toast!.options.type}`,`toast-${options.type}`)

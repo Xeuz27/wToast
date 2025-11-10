@@ -11,15 +11,15 @@ export function wToast() {
 			}, toast.options.duration)
 		},
 		//prettier-ignore
-		promise: async <T>( promise: Promise<T>, messages: { loading: string; success: string; error: string } ) => { 
-            const loadingToast = createToast(messages.loading, { type: "loading" })
+		promise: async <T>( promise: Promise<T>, messages: { loading: string; success: string; error: string }, options: ToastOptions = {} ) => { 
+            const loadingToast = createToast(messages.loading, { ...options, type: "loading" })
             try {
                 const result = await promise
                 updateToast(loadingToast.id, messages.success, {...loadingToast.options, type: 'success'})
                 return result
             } catch (err) {
                 updateToast(loadingToast.id, messages.error, {...loadingToast.options, type: 'error'})
-                throw err
+                // throw err
             }
             //  finally {
             //     console.log('asd')
