@@ -5,6 +5,11 @@ export type ToastPositions =  "bottom-left" | "bottom-right" | "top-left" | "top
 export type ToastStyles = Partial<CSSStyleDeclaration> & {
 	[key: string]: string | undefined
 }
+export type ToastPromiseMessages = {
+	success?: string
+	error?: string
+	loading?: string
+}
 
 export type ToastOptions = {
 	title?: string
