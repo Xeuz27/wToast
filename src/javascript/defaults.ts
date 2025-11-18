@@ -74,13 +74,13 @@ export class toastPromise<T> {
 		return this
 	}
 
-	async run(): Promise<[unknown | null, T | null]> {
+	async run(): Promise<[null, T] | [Error, null]> {
 		const loadingToast = createToast(this.messages.loading!, {
 			...this.options,
 			type: "loading",
 		})
 		return this.promise
-			.then((result) => {
+			.then((result): [null, T] => {
 				updateToast(loadingToast.id, this.messages.success!, {
 					...loadingToast.options,
 					...this.onResolveConfig,
@@ -89,9 +89,9 @@ export class toastPromise<T> {
 				if (this.onResolveCallback) {
 					this.onResolveCallback(result)
 				}
-				return result
+				return [null, result]
 			})
-			.catch((error) => {
+			.catch((error: Error): [Error, null] => {
 				updateToast(loadingToast.id, this.messages.error!, {
 					...loadingToast.options,
 					...this.onRejectConfig,
@@ -100,7 +100,7 @@ export class toastPromise<T> {
 				if (this.onRejectCallback) {
 					this.onRejectCallback(error)
 				}
-				return error
+				return [error, null]
 			})
 	}
 }
