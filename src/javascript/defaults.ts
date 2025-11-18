@@ -19,7 +19,7 @@ export class toastPromise<T> {
 	private onRejectConfig: ToastOptions
 
 	private onResolveCallback?: (data: any) => void
-	private onRejectCallback?: (error: unknown) => void
+	private onRejectCallback?: (error: Error) => void
 
 	constructor(
 		promise: Promise<T>,
@@ -43,21 +43,34 @@ export class toastPromise<T> {
 		this.run()
 	}
 
-	onResolve(config: ToastOptions, callback: (data: any) => void) {
-		// if (typeof config === ToastOptions)
-		this.onResolveConfig = { ...this.onResolveConfig, ...config }
-		if (callback) {
-			console.log(callback, " on resolve callback")
-			this.onResolveCallback = callback
-		}
+	/*function overloads */
+	onResolve(config: ToastOptions): this
+	onResolve(callback: (data: unknown) => void): this
+	onResolve(config: ToastOptions, callback: (data: unknown) => void): this
+	//prettier-ignore
+	onResolve(configOrCallback: ToastOptions | ((data: unknown) => void) = {}, maybeCallback?: (data: unknown) => void) {
+		typeof configOrCallback === "object"
+			? (this.onResolveConfig = {
+					...this.onResolveConfig,
+					...configOrCallback,
+				})
+			: (this.onResolveCallback = configOrCallback)
+		maybeCallback && (this.onResolveCallback = maybeCallback)
 		return this
 	}
-
-	onReject(config: ToastOptions = {}, callback?: (error: unknown) => void) {
-		this.onRejectConfig = { ...this.onRejectConfig, ...config }
-		if (callback) {
-			this.onRejectCallback = callback
-		}
+	/*function overloads */
+	onReject(config: ToastOptions): this
+	onReject(callback: (error: Error) => void): this
+	onReject(config: ToastOptions, callback: (error: Error) => void): this
+	//prettier-ignore
+	onReject(configOrCallback: ToastOptions | ((error: Error) => void) = {}, maybeCallback?: (error: Error) => void) {
+		typeof configOrCallback === "object"
+			? (this.onRejectConfig = {
+					...this.onRejectConfig,
+					...configOrCallback,
+				})
+			: (this.onRejectCallback = configOrCallback)
+		maybeCallback && (this.onRejectCallback = maybeCallback)
 		return this
 	}
 
@@ -74,7 +87,7 @@ export class toastPromise<T> {
 					type: "success",
 				})
 				if (this.onResolveCallback) {
-					this.onResolveCallback(`result: ${result}`)
+					this.onResolveCallback(result)
 				}
 				return result
 			})
@@ -85,11 +98,7 @@ export class toastPromise<T> {
 					type: "error",
 				})
 				if (this.onRejectCallback) {
-					error = {
-						message: "algo",
-					}
-					//@ts-ignore
-					this.onRejectCallback("error:", error)
+					this.onRejectCallback(error)
 				}
 				return error
 			})
