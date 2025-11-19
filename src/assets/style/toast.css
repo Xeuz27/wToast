@@ -1,7 +1,8 @@
 .toast-container {
 	position: fixed;
 	bottom: 1rem;
-	right: 1rem;
+	left: 1.5rem;
+	right: 1.5rem;
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -9,12 +10,14 @@
 	z-index: 9999;
 }
 .toast {
+	max-width: fit-content;
 	background: #333;
 	color: white;
 	padding: 0.75rem 1rem;
 	border-radius: 4px;
 	font-size: 1rem;
 	animation: fadeIn 0.3s ease-out;
+	word-break: break-all;
 }
 
 .toast-success {
@@ -28,6 +31,12 @@
 .toast-info {
 	width: 100%;
 	background: #2196f3;
+}
+.toast-title {
+	text-transform: capitalize;
+	font-size: 18px;
+	font-weight: 600;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes fadeIn {
