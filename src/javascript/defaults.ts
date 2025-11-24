@@ -1,5 +1,5 @@
-import type { ToastOptions, ToastPromiseMessages } from "../types/toast"
-import { createToast, updateToast } from "./render"
+import type { ToastOptions, ToastPromiseMessages } from "../types/toast.d.ts"
+import { createToast, updateToast } from "./render.ts"
 
 export var defaults = {
 	positions: "bottom-right",
