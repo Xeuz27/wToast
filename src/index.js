@@ -1,33 +1,43 @@
-import { wToast } from "./javascript/api.ts"
-import { $, $$ } from "./javascript/helpers.ts"
-const { show, promise } = wToast()
+export * from "./javascript/api.ts"
+export * from "./javascript/defaults.ts"
+export * from "./javascript/helpers.ts"
+export * from "./javascript/render.ts"
+export * from "./javascript/state.ts"
 
-const btn = $("toast-btn")
-const btnShow = $$("#toast-show")
+export * from "./types/toast.d.ts"
 
-const a = async () => {
-	// const promesa = sleep(2500)
-	const promesa = fetch("https://dummyjson.com/users")
-	try {
-		//@ts-ignore
-		let result = await promise(promesa, {
-			loading: "Guardando producto...",
-			success: "Producto guardado con éxito 🎉",
-			error: "Error al guardar el producto 😞",
-		})
-		console.log(result)
-	} catch (error) {
-		console.error("Fallo al guardar", error)
-	}
-}
+// // import stylesUrl from "./index.css"
+// import { wToast } from "./javascript/api.ts"
+// import { $, $$ } from "./javascript/helpers.ts"
 
-btnShow.forEach(function (btn) {
-	btn.addEventListener("click", (e) => {
-		show(e.target.innerText)
-	})
-})
+// const { show, promise } = wToast()
 
-btn.addEventListener("click", () => a())
+// const btn = $("toast-btn")
+// const btnShow = $$("#toast-show")
+
+// const a = async () => {
+// 	// const promesa = sleep(2500)
+// 	const promesa = fetch("https://dummyjson.com/users")
+// 	try {
+// 		//@ts-ignore
+// 		let result = await promise(promesa, {
+// 			loading: "Guardando producto...",
+// 			success: "Producto guardado con éxito 🎉",
+// 			error: "Error al guardar el producto 😞",
+// 		})
+// 		console.log(result)
+// 	} catch (error) {
+// 		console.error("Fallo al guardar", error)
+// 	}
+// }
+
+// btnShow.forEach(function (btn) {
+// 	btn.addEventListener("click", (e) => {
+// 		show(e.target.innerText)
+// 	})
+// })
+
+// btn.addEventListener("click", () => a())
 //ORIGINAL
 // const renderToast = (toasts = []) => {
 // 	let container =
