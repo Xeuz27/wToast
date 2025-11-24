@@ -1,6 +1,6 @@
-import type { Toast, ToastOptions, ToastStyles } from "../types/toast"
-import { $ } from "./helpers"
-import { addToastToState, getState, removeToastFromState } from "./state"
+import type { Toast, ToastOptions, ToastStyles } from "../types/toast.d.ts"
+import { $ } from "./helpers.js"
+import { addToastToState, getState, removeToastFromState } from "./state.ts"
 
 export function createContainer() {
 	const container = document.createElement("div")
@@ -17,7 +17,9 @@ const setStyles = (styles: ToastStyles | undefined, element: HTMLElement) => {
 	}
 }
 
-export function renderToast(toast: Toast) {
+const toastUnmounts = new Map() // id -> unmount function
+
+export async function renderToast(toast: Toast) {
 	if (toast.rendered) return
 	const container =
 		document.querySelector(".toast-container") || createContainer()
@@ -29,21 +31,39 @@ export function renderToast(toast: Toast) {
 	const { styles } = toast.options
 	setStyles(styles, toastContainer)
 
-	if (toast.options.title) {
-		const toastContent = document.createElement("section")
-		toastContent.className = "toast-content"
+	if (toast.options.icon) {
+		const toastIcon = document.createElement("span")
+		toastIcon.className = "toast-icon"
+		const unmount = await renderIcon(toast.options.icon, toastIcon)
+		toastContainer.append(toastIcon)
+		// save unmount function by toast id
+		toastUnmounts.set(toast.id, unmount)
+	}
 
-		const title = document.createElement("div")
+	if (toast.options.title) {
+		const title = document.createElement("span")
 		title.className = "toast-title"
 		title.textContent = toast.options.title
 
-		toastContainer.appendChild(title)
-		toastContainer.appendChild(toastContent)
-	}
+		const toastContent = document.createElement("section")
+		toastContent.className = "toast-content"
 
-	const toastMessage = document.createElement("p")
-	toastMessage.textContent = toast.message
-	toastContainer.appendChild(toastMessage)
+		toastContent.appendChild(title)
+
+		const toastMessage = document.createElement("p")
+		toastMessage.className = "toast-message"
+		toastMessage.textContent = toast.message
+
+		toastContent.appendChild(toastMessage)
+
+		toastContainer.appendChild(toastContent)
+	} else {
+		const toastMessage = document.createElement("p")
+		toastMessage.className = "toast-message"
+		toastMessage.textContent = toast.message
+
+		toastContainer.appendChild(toastMessage)
+	}
 
 	container.appendChild(toastContainer)
 
@@ -86,7 +106,31 @@ export function updateToast(
 
 	//prettier-ignore
 	toastDiv!.classList.replace(`toast-${toast!.options.type}`,`toast-${options.type}`)
-	toastDiv!.textContent = message
+
+	if (options.className) {
+		if (options.className.split(" ").length > 1) {
+			options.className.split(" ").map((c) => toastDiv!.classList.add(c))
+		} else {
+			toastDiv!.classList.add(options.className)
+		}
+	}
+
+	if (options.title) {
+		let toastTitle = toastDiv!.querySelector("span.toast-title")
+		if (toastTitle) {
+			toastTitle.textContent = options.title
+		} else {
+			const title = document.createElement("span")
+			title.className = "toast-title"
+			title.textContent = options.title
+
+			toastDiv?.prepend(title)
+		}
+	} else {
+		toastDiv!.querySelector("span.toast-title")?.remove()
+	}
+
+	toastDiv!.querySelector("p.toast-message")!.textContent = message
 	toast!.message = message
 	toast!.options = options
 
@@ -102,4 +146,44 @@ export function deleteToast(id: string) {
 	const div = document.getElementById(id)
 	if (div) div.remove()
 	removeToastFromState(id)
+
+	// call the unmount function if any
+	const unmount = toastUnmounts.get(id)
+	if (unmount) unmount()
+	toastUnmounts.delete(id)
+}
+
+const REACT_ELEMENT_TYPE = Symbol.for("react.element")
+
+export function isReactElement(value: any) {
+	return (
+		value && typeof value === "object" && value.$$typeof === REACT_ELEMENT_TYPE
+	)
+}
+export async function renderIcon(icon: any, container: any) {
+	// --- STRING SVG / HTML ---
+	if (typeof icon === "string") {
+		container.innerHTML = icon
+		return
+	}
+
+	// --- DOM NODE / ELEMENT ---
+	if (icon instanceof Node) {
+		container.appendChild(icon)
+		return
+	}
+
+	// --- REACT ELEMENT ---
+	if (isReactElement(icon)) {
+		// Load ReactDOM dynamically (only when needed)
+		const { createRoot } = await import("react-dom/client")
+
+		const root = createRoot(container)
+		root.render(icon)
+
+		// Return cleanup so toast can unmount later
+		return () => root.unmount()
+	}
+
+	console.warn("[wtoast]: Unsupported icon type:", icon)
 }

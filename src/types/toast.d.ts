@@ -16,7 +16,7 @@ export type ToastOptions = {
 	type?: ToastType
 	duration?: number
 	className?: string
-	icon?: HTMLElement | string
+	icon?: HTMLElement | string | any
 	styles?: ToastStyles
 }
 
