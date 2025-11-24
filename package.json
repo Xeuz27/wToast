@@ -20,7 +20,18 @@
 		"trailingComma": "es5",
 		"tabWidth": 2,
 		"semi": false,
-		"singleQuote": false
+		"singleQuote": false,
+		"overrides": [
+			{
+				"files": [
+					"./package-lock.json"
+				],
+				"options": {
+					"useTabs": false,
+					"tabWidth": 2
+				}
+			}
+		]
 	},
 	"author": "Jesus Gutierrez",
 	"license": "MIT",
@@ -30,12 +41,13 @@
 	"homepage": "https://github.com/Xeuz27/wToast#readme",
 	"description": "",
 	"devDependencies": {
+		"@types/react-dom": "^19.2.3",
 		"eslint": "^8.57.1",
+		"prettier": "^3.6.2",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
 		"standard": "^17.1.2",
 		"tsup": "^8.5.0",
 		"typescript": "^5.9.3"
-	},
-	"dependencies": {
-		"prettier": "^3.6.2"
 	}
 }
