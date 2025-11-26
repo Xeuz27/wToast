@@ -1,4 +1,4 @@
-import type { Toast, ToastState } from "../types/toast"
+import type { Toast, ToastState } from "../types/toast.d.ts"
 
 export let state: ToastState = {
 	toasts: [],

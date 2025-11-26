@@ -1,6 +1,6 @@
 import type { ToastOptions, ToastPromiseMessages } from "../types/toast.d.ts"
-import { toastPromise } from "./defaults"
-import { createToast, deleteToast } from "./render"
+import { toastPromise } from "./defaults.ts"
+import { createToast, deleteToast } from "./render.ts"
 
 export function wToast() {
 	return {
