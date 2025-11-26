@@ -24,6 +24,8 @@ toast library
 - [ ] - subir a npm y probar como paquete
 
 - [ ] - verificar el tipado
+- - [ ] - return type de promesa.run()
+- - [ ] - evitar llamar dos veces si se hace promesa.run() para retornar los valores de la promesa
 - [ ] - separate concerns for updating creating rendering deleting etc
 
 - [ ] - usar formatter
