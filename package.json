@@ -4,6 +4,8 @@
 	"main": "src/index.js",
 	"type": "module",
 	"scripts": {
+		"check": "prettier --check .",
+		"format": "prettier --write .",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup"
 	},
