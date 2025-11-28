@@ -1,5 +1,38 @@
 # wToast
 
+## Qué es?
+
+wToast es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion
+
+## Cómo instalarlo?
+
+haciendo
+
+```bash
+   npm install
+
+```
+
+y luego en tu proyecto importas
+
+```js
+import { wToast } from "wtoast"
+```
+
+## Cómo usarlo?
+
+para usarlo solo tienes que
+
+```js
+const { show, promise } = wToast()
+```
+
+y usar cualquiera de los dos metodos para mostrar un toast
+
+```js
+
+```
+
 toast library
 
 - [x] - permitir la personalizacion de los toast

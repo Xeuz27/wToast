@@ -1,8 +1,14 @@
 {
 	"name": "wtoast",
-	"version": "1.0.0",
-	"main": "src/index.js",
+	"version": "0.1.0",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"type": "module",
+	"files": [
+		"dist"
+	],
+	"sideEffects": "false",
 	"scripts": {
 		"ci": "npm run build && npm run check-format",
 		"check-format": "prettier --check .",
@@ -10,14 +16,20 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup"
 	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Xeuz27/wToast.git"
+	"devDependencies": {
+		"@types/react-dom": "^19.2.3",
+		"eslint": "^8.57.1",
+		"prettier": "^3.6.2",
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0",
+		"standard": "^17.1.2",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.3"
 	},
-	"keywords": [
-		"utility",
-		"toast"
-	],
+	"peerDependencies": {
+		"react": ">=18",
+		"react-dom": ">=18"
+	},
 	"prettier": {
 		"useTabs": true,
 		"trailingComma": "es5",
@@ -36,21 +48,21 @@
 			}
 		]
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Xeuz27/wToast.git"
+	},
+	"keywords": [
+		"utility",
+		"toast",
+		"notifications",
+		"alerts"
+	],
 	"author": "Jesus Gutierrez",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/Xeuz27/wToast/issues"
 	},
 	"homepage": "https://github.com/Xeuz27/wToast#readme",
-	"description": "",
-	"devDependencies": {
-		"@types/react-dom": "^19.2.3",
-		"eslint": "^8.57.1",
-		"prettier": "^3.6.2",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0",
-		"standard": "^17.1.2",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.3"
-	}
+	"description": "wToast es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion"
 }
