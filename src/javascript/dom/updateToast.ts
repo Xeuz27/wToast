@@ -36,8 +36,7 @@ export function updateToast(
 			const title = document.createElement("span")
 			title.className = "toast-title"
 			title.textContent = options.title
-
-			toastDiv?.prepend(title)
+			toastDiv!.querySelector("section.toast-content")?.prepend(title)
 		}
 	} else {
 		toastDiv!.querySelector("span.toast-title")?.remove()
