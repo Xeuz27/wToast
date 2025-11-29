@@ -1,5 +1,5 @@
 {
-	"name": "wtoast",
+	"name": "@yidev/wtoast",
 	"version": "0.1.0",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -8,7 +8,16 @@
 	"files": [
 		"dist"
 	],
-	"sideEffects": "false",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./dist/toast.css": "./src/assets/style/toast.css",
+		"./toast.css": "./src/assets/style/toast.css",
+		"./src/*": "./src/*"
+	},
+	"sideEffects": false,
 	"scripts": {
 		"ci": "npm run build && npm run check-format",
 		"check-format": "prettier --check .",
@@ -50,7 +59,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Xeuz27/wToast.git"
+		"url": "git+https://github.com/Xeuz27/wToast.git"
 	},
 	"keywords": [
 		"utility",
