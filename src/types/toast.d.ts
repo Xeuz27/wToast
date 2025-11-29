@@ -1,3 +1,5 @@
+import type { JSX } from "react"
+
 export type ToastType = "success" | "error" | "loading" | "default"
 //prettier-ignore
 export type ToastPositions =  "bottom-left" | "bottom-right" | "top-left" | "top-right"
@@ -16,7 +18,7 @@ export type ToastOptions = {
 	type?: ToastType
 	duration?: number
 	className?: string
-	icon?: HTMLElement | string | any
+	icon?: HTMLElement | string | any | JSX.Element
 	styles?: ToastStyles
 }
 
