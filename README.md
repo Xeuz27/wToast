@@ -2,35 +2,114 @@
 
 ## Qué es?
 
-wToast es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion
+WToast es una librería ligera y minimalista para mostrar toasts simples y personalizables en el navegador.  
+Sin dependencias externas, fácil de usar, y compatible con cualquier framework moderno (Astro, React, u otros proximamente) o vanilla JS.
 
-## Cómo instalarlo?
+## 🚀 Cómo instalarlo?
 
 haciendo
 
 ```bash
-   npm install
+   npm install @yidev/wtoast
 
 ```
 
-y luego en tu proyecto importas
+## 🛠 Uso básico
+
+```js
+import { wToast } from 'wtoast'
+import 'wtoast/src/assets/style/toast.css'
+
+const {show, promise} = wtoast()
+
+show('Soy un toast!')
+show('Algo salió mal', {
+  type: 'error',
+  duration: 5000,
+})
+promise(promesa, {
+			loading: 'Cargando promesa...',
+			success: 'Promesa resuelta 🎉',
+			error: 'Error en promesa 😞'
+		})
+			// .onResolve({...opcionesDeConfiguracion})
+			.onResolve((d: any) => d.json().then(console.log))
+			.onReject({...opcionesDeConfiguracion},(error: unknown) => console.log(error))
+
+
+// toast con icono jsx (lazy loaded)
+import { FiAlertCircle } from 'react-icons/fi'
+
+show('Error en...', {
+  type: 'error',
+  icon: <FiAlertCircle />
+})
+
+
+
+
+
+
+```
+
+## ⚙ opciones disponibles
+
+```js
+type ToastOptions = {
+	title?: string //header de el toast
+	type?: ToastType // "success" | "error" | "loading" | "default"
+	duration?: number // duracion del toast en ms: 3000 -> 3s
+	className?: string // clases que se anidaran al contenedor del toast
+	icon?: HTMLElement | string | any | JSX.Element
+	styles?: ToastStyles // estilos en linea
+}
+
+show: (message: string, options: ToastOptions = {}): void => { }
+promise: <T>(
+			promise: Promise<T>,
+			messages: ToastPromiseMessages,
+			options: ToastOptions = {}
+		): toastPromise<T> => {
+			return new toastPromise(promise, messages, options)
+		}
+
+   // onResolve(config: ToastOptions): this
+	// onResolve(callback: (data: unknown) => void): this
+	// onResolve(config: ToastOptions, callback: (data: unknown) => void): this
+
+   // onReject(config: ToastOptions): this
+	// onReject(callback: (error: Error) => void): this
+	// onReject(config: ToastOptions, callback: (error: Error) => void): this
+
+```
+
+## 📦 Uso en frameworks
+
+🌟 Astro
+
+Funciona sin configuración adicional.
+
+```ts
+---
+// componente Astro
+import { wToast } from 'wtoast'
+import 'wtoast/src/assets/style/toast.css'
+const {show}= wToast()
+---
+
+<button onclick="show('Hola desde Astro!')">Toast</button>
+```
+
+⚛️ React
 
 ```js
 import { wToast } from "wtoast"
-```
+import "wtoast/src/assets/style/toast.css"
 
-## Cómo usarlo?
-
-para usarlo solo tienes que
-
-```js
-const { show, promise } = wToast()
-```
-
-y usar cualquiera de los dos metodos para mostrar un toast
-
-```js
-
+const { show } = wToast()
+export default function App() {
+	return <button onClick={() => show("Hola React!")}>Toast</button>
+}
 ```
 
 toast library
