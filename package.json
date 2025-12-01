@@ -1,6 +1,6 @@
 {
 	"name": "@yidev/wtoast",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -11,11 +11,10 @@
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
+			"import": "./dist/index.ts"
 		},
-		"./dist/toast.css": "./src/assets/style/toast.css",
-		"./toast.css": "./src/assets/style/toast.css",
-		"./src/*": "./src/*"
+		"./dist/toast.css": "./dist/toast.css",
+		"./toast.css": "./dist/toast.css"
 	},
 	"sideEffects": false,
 	"scripts": {
