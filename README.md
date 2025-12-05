@@ -1,9 +1,9 @@
-# wToast
+# 📣 wToast — Toasts rápidos y minimalistas
 
 ## Qué es?
 
-WToast es una librería ligera y minimalista para mostrar toasts simples y personalizables en el navegador.  
-Sin dependencias externas, fácil de usar, y compatible con cualquier framework moderno (Astro, React, u otros proximamente) o vanilla JS.
+wToast es una librería ligera para mostrar toasts personalizables en el navegador.
+No depende de ningún framework y funciona en cualquier entorno moderno: Astro, React, Vanilla JS, y otros próximamente.
 
 ## 🚀 Cómo instalarlo?
 
@@ -11,50 +11,47 @@ haciendo
 
 ```bash
    npm install @yidev/wtoast
-
 ```
 
 ## 🛠 Uso básico
 
 ```js
 import { wToast } from 'wtoast'
-import 'wtoast/src/assets/style/toast.css'
+import '@yidev/wtoast/index.css'
 
 const {show, promise} = wtoast()
 
 show('Soy un toast!')
+
 show('Algo salió mal', {
   type: 'error',
   duration: 5000,
 })
-promise(promesa, {
-			loading: 'Cargando promesa...',
-			success: 'Promesa resuelta 🎉',
-			error: 'Error en promesa 😞'
-		})
-			// .onResolve({...opcionesDeConfiguracion})
-			.onResolve((d: any) => d.json().then(console.log))
-			.onReject({...opcionesDeConfiguracion},(error: unknown) => console.log(error))
 
+promise(fetch("/api"), {
+	loading: 'Cargando promesa...',
+	success: 'Promesa resuelta 🎉',
+	error: 'Error en promesa 😞'
+})
+	.onResolve((data) => console.log(data))
+    .onReject((err) => console.error(err))
 
-// toast con icono jsx (lazy loaded)
+// toast con icono jsx
 import { FiAlertCircle } from 'react-icons/fi'
 
 show('Error en...', {
   type: 'error',
   icon: <FiAlertCircle />
 })
-
-
-
-
-
-
 ```
 
-## ⚙ opciones disponibles
+## ⚙️ API y opciones disponibles
+
+### show(message, options?)
 
 ```js
+show: (message: string, options: ToastOptions = {}): void => { }
+
 type ToastOptions = {
 	title?: string //header de el toast
 	type?: ToastType // "success" | "error" | "loading" | "default"
@@ -63,56 +60,91 @@ type ToastOptions = {
 	icon?: HTMLElement | string | any | JSX.Element
 	styles?: ToastStyles // estilos en linea
 }
+```
 
-show: (message: string, options: ToastOptions = {}): void => { }
-promise: <T>(
-			promise: Promise<T>,
-			messages: ToastPromiseMessages,
-			options: ToastOptions = {}
-		): toastPromise<T> => {
-			return new toastPromise(promise, messages, options)
-		}
 
-   // onResolve(config: ToastOptions): this
-	// onResolve(callback: (data: unknown) => void): this
-	// onResolve(config: ToastOptions, callback: (data: unknown) => void): this
+### promise(promise, messages, options?)
+Muestra un toast que cambia automáticamente según el estado de la promesa.
+```js
 
-   // onReject(config: ToastOptions): this
-	// onReject(callback: (error: Error) => void): this
-	// onReject(config: ToastOptions, callback: (error: Error) => void): this
+promise: <T>( promise: Promise<T>, messages: ToastPromiseMessages, options: ToastOptions = {} ): toastPromise<T> => {
+	return new toastPromise(promise, messages, options)
+}
 
+```
+Metodos encadenables:
+```js
+// onResolve(config: ToastOptions): this
+// onResolve(callback: (data: unknown) => void): this
+// onResolve(config: ToastOptions, callback: (data: unknown) => void): this
+
+// onReject(config: ToastOptions): this
+// onReject(callback: (error: Error) => void): this
+// onReject(config: ToastOptions, callback: (error: Error) => void): this
 ```
 
 ## 📦 Uso en frameworks
 
-🌟 Astro
+### 🌟 Astro
 
 Funciona sin configuración adicional.
 
 ```ts
 ---
-// componente Astro
-import { wToast } from 'wtoast'
-import 'wtoast/src/assets/style/toast.css'
-const {show}= wToast()
+import { wToast } from '@yidev/wtoast'
+import '@yidev/wtoast/index.css'
+const { show } = wToast()
 ---
 
 <button onclick="show('Hola desde Astro!')">Toast</button>
 ```
 
-⚛️ React
+### ⚛️ React
 
 ```js
-import { wToast } from "wtoast"
-import "wtoast/src/assets/style/toast.css"
-
+import { wToast } from '@yidev/wtoast'
+import '@yidev/wtoast/index.css'
 const { show } = wToast()
-export default function App() {
+
+export default function Button() {
 	return <button onClick={() => show("Hola React!")}>Toast</button>
 }
 ```
 
-toast library
+## roadmap / to do
+
+### ✅ completado
+- [x] Personalización con clases y estilos
+- [x] Tipado TS para los estilos
+- [x] Títulos opcionales
+- [x] Actualizar iconos en estados de promesa
+- [x] Renderizado seguro de íconos JSX
+- [x] Compatibilidad con React 18/19
+- [x] Validación de elementos JSX para evitar ejecutar funciones
+
+### ⏳ En progreso
+- [ ] Soporte para más frameworks (Svelte, Vue, Solid)
+- [ ] Mostrar barra de progreso del tiempo restante
+- [ ] Botón para cerrar manualmente
+- [ ] Gestos para eliminar (swipe)
+- [ ] Documentación mejorada en web / Página de ejemplo/demo
+- [ ] Tests unitarios
+- [ ] Mejorar separación de responsabilidades internas
+- [ ] C/I para publicar nuevas versiones
+- [ ] Revisar tipados finales
+- [ ] Asegurar que promise.run() no duplique ejecuciones
+
+
+
+
+
+
+
+
+
+
+
+
 
 - [x] - permitir la personalizacion de los toast
 - - [x] - con clases?
