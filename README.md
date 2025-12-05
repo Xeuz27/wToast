@@ -131,7 +131,7 @@ toast library
 - [ ] - boton de eliminar toast
 - - [ ] - gesto de eliminar toast?
 
-- [ ] - crear una documentacion sencilla
+- [?] - crear una documentacion sencilla
 - [ ] - crear una web sencilla
 - [ ] - subir a npm y probar como paquete
 
@@ -142,3 +142,4 @@ toast library
 
 - [ ] - usar formatter
 - [ ] - hacer test
+- [ ] - crear un c/i
