@@ -2,15 +2,18 @@ import { toastUnmounts } from "../renderers/index.ts"
 import { getState, removeToastFromState } from "../state.ts"
 
 export function deleteToast(id: string) {
-	const toasts = getState()
-	if (toasts.length < 1) document.querySelector(".toast-container")?.remove()
+	//llamar toast(s) container
+	let toastsContainerDiv = document.querySelector(".toast-container")
+	let toastContainerDiv = document.getElementById(id)
 
-	const div = document.getElementById(id)
-	if (div) div.remove()
+	if (toastContainerDiv) toastContainerDiv.remove()
 	removeToastFromState(id)
 
 	// call the unmount function if any
 	const unmount = toastUnmounts.get(id)
 	if (unmount) unmount()
 	toastUnmounts.delete(id)
+
+	let toasts = getState()
+	if (toasts.length <= 0) toastsContainerDiv?.remove()
 }
