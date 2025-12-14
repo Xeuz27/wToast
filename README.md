@@ -16,32 +16,32 @@ haciendo
 ## 🛠 Uso básico
 
 ```js
-import { wToast } from 'wtoast'
-import '@yidev/wtoast/index.css'
+import { wToast } from "wtoast"
+import "@yidev/wtoast/index.css"
 
-const {show, promise} = wtoast()
+const { show, promise } = wtoast()
 
-show('Soy un toast!')
+show("Soy un toast!")
 
-show('Algo salió mal', {
-  type: 'error',
-  duration: 5000,
+show("Algo salió mal", {
+	type: "error",
+	duration: 5000,
 })
 
 promise(fetch("/api"), {
-	loading: 'Cargando promesa...',
-	success: 'Promesa resuelta 🎉',
-	error: 'Error en promesa 😞'
+	loading: "Cargando promesa...",
+	success: "Promesa resuelta 🎉",
+	error: "Error en promesa 😞",
 })
 	.onResolve((data) => console.log(data))
-    .onReject((err) => console.error(err))
+	.onReject((err) => console.error(err))
 
 // toast con icono jsx
-import { FiAlertCircle } from 'react-icons/fi'
+import { FiAlertCircle } from "react-icons/fi"
 
-show('Error en...', {
-  type: 'error',
-  icon: <FiAlertCircle />
+show("Error en...", {
+	type: "error",
+	icon: <FiAlertCircle />,
 })
 ```
 
@@ -62,9 +62,10 @@ type ToastOptions = {
 }
 ```
 
-
 ### promise(promise, messages, options?)
+
 Muestra un toast que cambia automáticamente según el estado de la promesa.
+
 ```js
 
 promise: <T>( promise: Promise<T>, messages: ToastPromiseMessages, options: ToastOptions = {} ): toastPromise<T> => {
@@ -72,7 +73,9 @@ promise: <T>( promise: Promise<T>, messages: ToastPromiseMessages, options: Toas
 }
 
 ```
+
 Metodos encadenables:
+
 ```js
 // onResolve(config: ToastOptions): this
 // onResolve(callback: (data: unknown) => void): this
@@ -102,8 +105,8 @@ const { show } = wToast()
 ### ⚛️ React
 
 ```js
-import { wToast } from '@yidev/wtoast'
-import '@yidev/wtoast/index.css'
+import { wToast } from "@yidev/wtoast"
+import "@yidev/wtoast/index.css"
 const { show } = wToast()
 
 export default function Button() {
@@ -114,6 +117,7 @@ export default function Button() {
 ## roadmap / to do
 
 ### ✅ completado
+
 - [x] Personalización con clases y estilos
 - [x] Tipado TS para los estilos
 - [x] Títulos opcionales
@@ -123,8 +127,11 @@ export default function Button() {
 - [x] Validación de elementos JSX para evitar ejecutar funciones
 
 ### ⏳ En progreso
+
 - [ ] Soporte para más frameworks (Svelte, Vue, Solid)
-- [ ] Mostrar barra de progreso del tiempo restante
+- [x] Mostrar barra de progreso del tiempo restante
+- - [x] detener en hover
+- - [x] resumir depsues del hover
 - [ ] Botón para cerrar manualmente
 - [ ] Gestos para eliminar (swipe)
 - [ ] Documentación mejorada en web / Página de ejemplo/demo
@@ -133,18 +140,6 @@ export default function Button() {
 - [ ] C/I para publicar nuevas versiones
 - [ ] Revisar tipados finales
 - [ ] Asegurar que promise.run() no duplique ejecuciones
-
-
-
-
-
-
-
-
-
-
-
-
 
 - [x] - permitir la personalizacion de los toast
 - - [x] - con clases?
