@@ -1,4 +1,4 @@
-.toast-container {
+.toasts-container {
 	position: fixed;
 	bottom: 1rem;
 	left: 1.5rem;
@@ -67,6 +67,18 @@
 		background: oklch(20.8% 0.042 265.755);
 		outline: 2px solid oklch(41.283% 0.00005 271.152);
 		color: oklch(87.483% 0.00267 230.235);
+	}
+	.toast-success {
+		width: 100%;
+		background: #08490a;
+	}
+	.toast-error {
+		width: 100%;
+		background: #420b07;
+	}
+	.toast-info {
+		width: 100%;
+		background: #092c48;
 	}
 }
 

@@ -1,8 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
 body {
 	place-content: center;
 }
@@ -18,6 +13,7 @@ body {
 }
 
 .btn {
+	margin-inline: auto;
 	width: max-content;
 	padding: 12px 18px;
 	border: 1px solid black;
