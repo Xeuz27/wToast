@@ -10,7 +10,7 @@
 			<div id="square-pattern" class="rotate-[45deg]"></div>
 		</div>
 	</div>
-	<h1 class="font-bold text-6xl">wToast</h1>
+	<span class="font-bold text-6xl">wToast</span>
 	<p class="text-white text-2xl text-balance text-center w-2/4">
 		es una utilidad para mostrar un toast, una notificacion con un mensaje
 		normalmente de exito o de fallo de alguna operacion
@@ -29,24 +29,36 @@
 	</div>
 </main>
 <script>
-	import { wToast } from "@yidev/wtoast"
+	import loading2 from "../../../assets/icons/circle-check-big.svg"
+	// import loading from "../../../assets/icons/circle-check-big.svg?raw"
+	import { wToast } from "../../../javascript/api"
+	import { sleep } from "../../../javascript/utils/helpers"
+
 	const { show, promise } = wToast()
 	document.addEventListener("astro:page-load", () => {
-		const sleep = async (ms: number) => {
-			await new Promise((resolve, reject) => setTimeout(reject, ms))
-		}
 		document.getElementById("toast-btn")?.addEventListener("click", () => {
-			show("show")
+			// var svg = document.createElement("div")
+			// svg.innerHTML = loading
+			// svg.className = "text-white mr-2"
+			show("show", {
+				icon: loading2,
+				duration: 5000,
+			})
 		})
 		document.getElementById("toast-promesa")?.addEventListener("click", () => {
+			// var svg = document.createElement("div")
+			// svg.innerHTML = loading
+			// svg.className = "text-white mr-2"
 			promise(
-				sleep(5000),
+				sleep(1000),
 				{
 					error: "error",
 					loading: "cargando",
 					success: "exito",
 				},
 				{
+					type: "error",
+					// icon: svg,
 					duration: 5000,
 				}
 			)
@@ -54,7 +66,7 @@
 	})
 </script>
 <style>
-	h1 {
+	span {
 		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 		color: transparent;
 		background-clip: text;
