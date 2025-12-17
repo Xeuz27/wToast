@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@yidev/wtoast/index.css";
+@config "../../tailwind.config.mjs";
+
+@layer base {
+	.prose code,
+	.astro-code {
+		@apply text-base mb-2 px-4;
+	}
+
+	/* prose styles here */
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose h5,
+	.prose h6 {
+		@apply text-base font-bold text-white mb-2 sm:text-lg md:text-3xl;
+	}
+	.prose p,
+	.prose li {
+		@apply text-sm tracking-wide text-white sm:text-base mb-6 md:text-lg;
+	}
+	/* .prose a {
+		@apply text-blue-600 !underline decoration-blue-600 decoration-solid underline-offset-2;
+	} */
+	.prose bold {
+		@apply font-bold;
+	}
+}
+body {
+	font-family:
+		"Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

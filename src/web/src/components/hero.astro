@@ -1,0 +1,102 @@
+<main
+	class="h-[75vh] flex justify-center overflow-hidden flex-col relative gap-2 items-center"
+>
+	<div class="bg-fondo/80 z-[-09] fixed inset-0"></div>
+	<div class="fixed mask inset-0 -z-10">
+		<img src="/luces.webp" class="absolute inset-0 size-full" alt="" />
+	</div>
+	<div id="mask-vertical">
+		<div id="mask-horizontal">
+			<div id="square-pattern" class="rotate-[45deg]"></div>
+		</div>
+	</div>
+	<h1 class="font-bold text-6xl">wToast</h1>
+	<p class="text-white text-2xl text-balance text-center w-2/4">
+		es una utilidad para mostrar un toast, una notificacion con un mensaje
+		normalmente de exito o de fallo de alguna operacion
+	</p>
+	<div class="">
+		<button
+			id="toast-btn"
+			class="px-12 py-4 inline-block bg-emerald-200/90 border-2 border-emerald-700 font-semibold rounded-4xl"
+			>toast</button
+		>
+		<button
+			id="toast-promesa"
+			class="px-12 py-4 inline-block bg-emerald-200/90 border-2 border-emerald-700 font-semibold rounded-4xl"
+			>promesa</button
+		>
+	</div>
+</main>
+<script>
+	import { wToast } from "@yidev/wtoast"
+	const { show, promise } = wToast()
+	document.addEventListener("astro:page-load", () => {
+		const sleep = async (ms: number) => {
+			await new Promise((resolve, reject) => setTimeout(reject, ms))
+		}
+		document.getElementById("toast-btn")?.addEventListener("click", () => {
+			show("show")
+		})
+		document.getElementById("toast-promesa")?.addEventListener("click", () => {
+			promise(
+				sleep(5000),
+				{
+					error: "error",
+					loading: "cargando",
+					success: "exito",
+				},
+				{
+					duration: 5000,
+				}
+			)
+		})
+	})
+</script>
+<style>
+	h1 {
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		color: transparent;
+		background-clip: text;
+		background-image: linear-gradient(90deg, rgba(36, 151, 148, 1) 50%);
+	}
+	.mask {
+		mask-image: linear-gradient(black 80%, transparent 95%);
+	}
+	/*prettier-ignore*/
+	#square-pattern {
+		z-index: -08;
+		position: fixed;
+		translate: -650px;
+		inset: 0;
+		width: 250%;
+		height: 250%;
+		background-size: 80px 80px;
+		background-image:
+    		linear-gradient(to bottom, var(--svg-pattern-bg-image-color) 1px, transparent 1px),
+      		linear-gradient(to right, var(--svg-pattern-bg-image-color) 1px, transparent 1px);
+    	
+	}
+	#mask-vertical {
+		inset: 0;
+		position: fixed;
+		z-index: -08;
+		mask-image: linear-gradient(
+			to top,
+			transparent 5%,
+			black 50%,
+			transparent 95%
+		);
+	}
+	#mask-horizontal {
+		inset: 0;
+		position: fixed;
+		z-index: -08;
+		mask-image: linear-gradient(
+			to right,
+			transparent -05%,
+			black 50%,
+			transparent 105%
+		);
+	}
+</style>
