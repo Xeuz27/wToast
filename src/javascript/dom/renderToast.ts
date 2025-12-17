@@ -7,7 +7,7 @@ import { setStyles } from "./styling.ts"
 export async function renderToast(toast: Toast) {
 	if (toast.rendered) return
 	const container =
-		document.querySelector(".toast-container") || createContainer()
+		document.querySelector(".toasts-container") || createContainer()
 
 	let toastContainer = document.createElement("div")
 	toastContainer.id = toast.id

@@ -3,7 +3,7 @@ import { getState, removeToastFromState } from "../state.ts"
 
 export function deleteToast(id: string) {
 	//llamar toast(s) container
-	let toastsContainerDiv = document.querySelector(".toast-container")
+	let toastsContainerDiv = document.querySelector(".toasts-container")
 	let toastContainerDiv = document.getElementById(id)
 
 	if (toastContainerDiv) toastContainerDiv.remove()
