@@ -10,8 +10,16 @@ export async function renderIcon(icon: any, container: any) {
 	}
 
 	// --- DOM NODE / ELEMENT ---
-	if (icon instanceof Node) {
+	if (typeof icon === "object" && icon instanceof Node) {
 		container.appendChild(icon)
+		return
+	}
+	// --- SVG ELEMENT? ---
+	if (typeof icon === "object" && !(icon instanceof Node)) {
+		let svg = document.createElement("img")
+		svg.src = icon.src
+		container.appendChild(svg)
+
 		return
 	}
 

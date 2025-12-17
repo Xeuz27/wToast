@@ -9,7 +9,7 @@ export async function renderToast(toast: Toast) {
 	const container =
 		document.querySelector(".toasts-container") || createContainer()
 
-	let toastContainer = document.createElement("div")
+	const toastContainer = document.createElement("div")
 	toastContainer.id = toast.id
 	toastContainer.className = `toast toast-${toast.options.type} ${toast.options.className || ""}`
 
@@ -40,7 +40,9 @@ export async function renderToast(toast: Toast) {
 		const unmount = await renderIcon(toast.options.icon, toastIcon)
 		toastContainer.append(toastIcon)
 		// save unmount function by toast id
-		toastUnmounts.set(toast.id, unmount)
+		if (unmount) {
+			toastUnmounts.set(toast.id, unmount)
+		}
 	}
 
 	if (toast.options.title) {
