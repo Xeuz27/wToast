@@ -1,5 +1,7 @@
 import type { ToastOptions } from "../../types/toast.js"
+import { whatIcon } from "../core/createToast.ts"
 import { deleteToast } from "../core/deleteToast.ts"
+import { renderIcon } from "../renderers/index.ts"
 import { getState } from "../state.ts"
 import { $ } from "../utils/helpers.ts"
 import { setStyles } from "./styling.ts"
@@ -26,6 +28,13 @@ export function updateToast(
 		} else {
 			toastDiv!.classList.add(options.className)
 		}
+	}
+
+	if (options.icon) {
+		renderIcon(
+			whatIcon(options.type!),
+			toastDiv!.querySelector("span.toast-icon")
+		)
 	}
 
 	if (options.title) {
