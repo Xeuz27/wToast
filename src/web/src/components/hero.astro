@@ -25,7 +25,6 @@
 	</div>
 </main>
 <script>
-	import loading2 from "../../../assets/icons/circle-check-big.svg"
 	// import loading from "../../../assets/icons/circle-check-big.svg?raw"
 	import { wToast } from "../../../javascript/api"
 	import { sleep } from "../../../javascript/utils/helpers"
@@ -37,8 +36,8 @@
 			// svg.innerHTML = loading
 			// svg.className = "text-white mr-2"
 			show("show", {
-				icon: loading2,
-				duration: 5000,
+				// icon: loading2,
+				duration: 3000,
 			})
 		})
 		document.getElementById("toast-promesa")?.addEventListener("click", () => {
@@ -54,8 +53,8 @@
 				},
 				{
 					type: "error",
-					// icon: svg,
-					duration: 5000,
+					// icon: loading2,
+					duration: 3000,
 				}
 			)
 		})

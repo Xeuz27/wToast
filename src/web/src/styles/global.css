@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "@yidev/wtoast/index.css";
+@import "../../../assets/style/toast.css";
+/* @import "@yidev/wtoast/index.css"; */
 @config "../../tailwind.config.mjs";
 
 @layer base {
