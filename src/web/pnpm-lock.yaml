@@ -640,7 +640,7 @@ packages:
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
   '@yidev/wtoast@file:../../yidev-wtoast-0.1.5.tgz':
-    resolution: {integrity: sha512-cnfSAsTwIHHVJguWKAsPyjpLXubOpZh89lNo+ho1XCkIWA3yI+8YX5HvzRWIoa1LrBmPKDzvRBSUq5WyoFLJvQ==, tarball: file:../../yidev-wtoast-0.1.5.tgz}
+    resolution: {integrity: sha512-w93HrVSmF0SrYY2YcVB/9oL+fHTyj15S+MHm66DsT4l7pDS9JXGZCHIyQet9QAV6ZlyqVHP6IJIX8hAHVySiJg==, tarball: file:../../yidev-wtoast-0.1.5.tgz}
     version: 0.1.5
     peerDependencies:
       react: ^18.2.0 || ^19.2.1

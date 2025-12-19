@@ -7,15 +7,13 @@ No depende de ningún framework y funciona en cualquier entorno moderno: Astro, 
 
 ## 🚀 Cómo instalarlo?
 
-haciendo
-
 ```bash
-   npm install @yidev/wtoast
+npm install @yidev/wtoast
 ```
 
 ## 🛠 Uso básico
 
-```js
+```ts
 import { wToast } from "wtoast"
 import "@yidev/wtoast/index.css"
 
@@ -67,11 +65,9 @@ type ToastOptions = {
 Muestra un toast que cambia automáticamente según el estado de la promesa.
 
 ```js
-
 promise: <T>( promise: Promise<T>, messages: ToastPromiseMessages, options: ToastOptions = {} ): toastPromise<T> => {
 	return new toastPromise(promise, messages, options)
 }
-
 ```
 
 Metodos encadenables:
@@ -87,6 +83,19 @@ Metodos encadenables:
 ```
 
 ## 📦 Uso en frameworks
+
+### 🕶 Javascript
+
+```js
+import { wToast } from "@yidev/wtoast"
+const { show } = wToast()
+//styles/index.css
+import "@yidev/wtoast/index.css"
+
+show("show", {
+	duration: 3000,
+})
+```
 
 ### 🌟 Astro
 
@@ -130,16 +139,49 @@ export default function Button() {
 
 - [ ] Soporte para más frameworks (Svelte, Vue, Solid)
 - [x] Mostrar barra de progreso del tiempo restante
+- [ ] actualizar icono en promesa()
 - - [x] detener en hover
 - - [x] resumir depsues del hover
 - [ ] Botón para cerrar manualmente
 - [ ] Gestos para eliminar (swipe)
-- [ ] Documentación mejorada en web / Página de ejemplo/demo
+- [x?] Documentación mejorada en web / Página de ejemplo/demo
 - [ ] Tests unitarios
 - [ ] Mejorar separación de responsabilidades internas
 - [ ] C/I para publicar nuevas versiones
 - [ ] Revisar tipados finales
 - [ ] Asegurar que promise.run() no duplique ejecuciones
+
+## ✨ Qué podría agregarse a la documentación
+
+Te recomiendo añadir:
+
+### 🔹 Sección de “Características”
+
+Sin dependencias
+Ligero
+Soporta JSX sin React en bundle
+Lazy rendering
+Permite múltiples toasts
+.promise() API tipo “toast.promise” de otras libs
+
+### 🔹 Sección de “Limitaciones actuales”
+
+JSX solo en React por ahora
+No hay yet soporte para SSR
+No hay animaciones personalizadas todavía
+
+### 🔹 Sección de “Ejemplos avanzados”
+
+Cómo cambiar posición global
+Cómo personalizar con CSS variables
+Cómo extender estilos
+Cómo hacer un theme (light/dark)
+
+### 🔹 Notas técnicas
+
+Explicar que JSX se valida sin ejecutarse
+Explicar que React se carga de manera dinámica
+Explicar cómo funciona la detección de framework en futuro
 
 - [x] - permitir la personalizacion de los toast
 - - [x] - con clases?
