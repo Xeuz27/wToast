@@ -1,0 +1,17 @@
+{
+	"types": [
+		{ "type": "feat", "section": "Added" },
+		{ "type": "fix", "section": "Fixed" },
+		{ "type": "chore", "section": "chores"  },
+		{ "type": "feat(web):", "hidden": true },
+		{ "type": "chore(web):", "hidden": true },
+		{ "type": "docs(web):", "hidden": true },
+		{ "type": "style(web):", "hidden": true },
+		{ "type": "refactor(web):", "hidden": true },
+		{ "type": "docs", "hidden": true },
+		{ "type": "style", "hidden": true },
+		{ "type": "refactor", "hidden": true },
+		{ "type": "perf", "hidden": true },
+		{ "type": "test", "hidden": true }
+	]
+}
