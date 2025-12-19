@@ -1,3 +1,4 @@
-// Recognize all CSS files as module imports.
+// Recognize all type of files as module imports.
 declare module "*.css" {}
 declare module "*svg" {}
+declare module "*svg?raw" {}
