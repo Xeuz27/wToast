@@ -12,6 +12,8 @@
 		"@tailwindcss/vite": "^4.1.16",
 		"@yidev/wtoast": "0.1.6",
 		"astro": "^5.11.0",
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3",
 		"tailwindcss": "^4.1.16"
 	}
 }
