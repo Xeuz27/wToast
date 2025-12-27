@@ -1,6 +1,6 @@
 {
 	"name": "@yidev/wtoast",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -42,11 +42,20 @@
 	},
 	"prettier": {
 		"useTabs": true,
+		"printWidth": 150,
 		"trailingComma": "es5",
 		"tabWidth": 2,
 		"semi": false,
 		"singleQuote": false,
 		"overrides": [
+			{
+				"files": [
+					"./src/web/*"
+				],
+				"options": {
+					"printWidth": 80
+				}
+			},
 			{
 				"files": [
 					"./package-lock.json"
@@ -55,6 +64,18 @@
 					"useTabs": false,
 					"tabWidth": 2
 				}
+			}
+		]
+	},
+	"standard-version": {
+		"types": [
+			{
+				"type": "feat",
+				"section": "Added"
+			},
+			{
+				"type": "fix",
+				"section": "Fixed"
 			}
 		]
 	},
