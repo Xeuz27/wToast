@@ -139,12 +139,14 @@ export default function Button() {
 
 - [ ] Soporte para más frameworks (Svelte, Vue, Solid)
 - [x] Mostrar barra de progreso del tiempo restante
-- [ ] actualizar icono en promesa()
+- [x] actualizar icono en promesa()
+- [ ] en onresolve/onreject?
 - - [x] detener en hover
 - - [x] resumir depsues del hover
 - [ ] Botón para cerrar manualmente
 - [ ] Gestos para eliminar (swipe)
 - [x?] Documentación mejorada en web / Página de ejemplo/demo
+- [x] changelog
 - [ ] Tests unitarios
 - [ ] Mejorar separación de responsabilidades internas
 - [ ] C/I para publicar nuevas versiones
