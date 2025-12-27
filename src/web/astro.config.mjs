@@ -7,11 +7,6 @@ import tailwindcss from "@tailwindcss/vite"
 export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
-		build: {
-			rollupOptions: {
-				external: ["react-dom/client", "react"],
-			},
-		},
 	},
 
 	devToolbar: { enabled: false },
