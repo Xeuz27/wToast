@@ -1,27 +1,18 @@
-<main
-	class="h-[75vh] flex justify-center overflow-hidden flex-col relative gap-2 items-center"
->
+---
+import Button from "./Button.astro"
+---
+
+<main class="h-[75vh] flex justify-center overflow-hidden flex-col relative gap-2 items-center">
 	<div id="mask-vertical">
 		<div id="mask-horizontal">
 			<div id="square-pattern" class="rotate-[45deg]"></div>
 		</div>
 	</div>
 	<span class="font-bold text-6xl">wToast</span>
-	<p class="text-white text-2xl text-balance text-center w-2/4">
-		es una utilidad para mostrar un toast, una notificacion con un mensaje
-		normalmente de exito o de fallo de alguna operacion
-	</p>
+	<p class="text-white text-2xl text-balance text-center w-2/4">es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion</p>
 	<div class="">
-		<button
-			id="toast-btn"
-			class="px-12 py-4 inline-block bg-emerald-200/90 border-2 border-emerald-700 font-semibold rounded-4xl"
-			>toast</button
-		>
-		<button
-			id="toast-promesa"
-			class="px-12 py-4 inline-block bg-emerald-200/90 border-2 border-emerald-700 font-semibold rounded-4xl"
-			>promesa</button
-		>
+		<Button text="toast" id="toast-btn" />
+		<Button text="Promesa" id="toast-promesa" />
 	</div>
 </main>
 <script>
