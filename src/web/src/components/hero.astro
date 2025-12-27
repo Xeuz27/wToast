@@ -9,7 +9,9 @@ import Button from "./Button.astro"
 		</div>
 	</div>
 	<span class="font-bold text-6xl">wToast</span>
-	<p class="text-white text-2xl text-balance text-center w-2/4">es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion</p>
+	<p class="text-white text-2xl text-balance text-center w-2/4">
+		es una utilidad para mostrar un toast, una notificacion con un mensaje normalmente de exito o de fallo de alguna operacion
+	</p>
 	<div class="">
 		<Button text="toast" id="toast-btn" />
 		<Button text="Promesa" id="toast-promesa" />
@@ -17,8 +19,17 @@ import Button from "./Button.astro"
 </main>
 <script>
 	// import loading from "../../../assets/icons/circle-check-big.svg?raw"
-	import { wToast } from "../../../javascript/api"
-	import { sleep } from "../../../javascript/utils/helpers"
+	import { wToast } from "@yidev/wtoast"
+	let trueOrFalse = 1
+	export const sleep = async (ms: number) => {
+		if (trueOrFalse % 2 === 0) {
+			trueOrFalse += 1
+			await new Promise((resolve, reject) => setTimeout(reject, ms))
+		} else {
+			trueOrFalse += 1
+			await new Promise((resolve, reject) => setTimeout(resolve, ms))
+		}
+	}
 
 	const { show, promise } = wToast()
 	document.addEventListener("astro:page-load", () => {
