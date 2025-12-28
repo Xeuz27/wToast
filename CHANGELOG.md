@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.7 (2025-12-28)
+
+### Fixed
+
+- error in build preventing icons to be imported correctly ([b7a0c5a](https://github.com/Xeuz27/wToast/commit/b7a0c5ad5585e9840656a038ee3e6036d3217e69))
+
 ### 0.1.6 (2025-12-27)
 
 ### Fixed
