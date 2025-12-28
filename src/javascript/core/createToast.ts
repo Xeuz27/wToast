@@ -1,9 +1,9 @@
 import type { Toast, ToastOptions } from "../../types/toast.js"
 
-import arrowLoad from "../../assets/icons/arrow-load.svg?raw"
-import circleCheck from "../../assets/icons/circle-check-big.svg?raw"
-import error from "../../assets/icons/error.svg?raw"
-import ok from "../../assets/icons/ok.svg?raw"
+import { arrowLoad } from "../../assets/icons/arrow-load.ts"
+import { circleCheck } from "../../assets/icons/circle-check-big.ts"
+import { error } from "../../assets/icons/error.ts"
+import { ok } from "../../assets/icons/ok.ts"
 import { renderToast } from "../dom/renderToast.ts"
 import { addToastToState } from "../state.ts"
 
