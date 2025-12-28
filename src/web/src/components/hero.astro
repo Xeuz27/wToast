@@ -18,7 +18,6 @@ import Button from "./Button.astro"
 	</div>
 </main>
 <script>
-	// import loading from "../../../assets/icons/circle-check-big.svg?raw"
 	import { wToast } from "@yidev/wtoast"
 	let trueOrFalse = 1
 	export const sleep = async (ms: number) => {
@@ -38,6 +37,7 @@ import Button from "./Button.astro"
 			// svg.innerHTML = loading
 			// svg.className = "text-white mr-2"
 			show("show", {
+				// icon: loading,
 				// icon: loading2,
 				duration: 3000,
 			})
