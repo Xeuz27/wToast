@@ -69,9 +69,12 @@ export async function renderToast(toast: Toast) {
 
 		toastContainer.appendChild(toastMessage)
 	}
-	let timeLeftDiv = document.createElement("div")
-	timeLeftDiv.classList.add("timeLeft")
-	toastContainer.appendChild(timeLeftDiv)
+
+	if (toast.options.type !== "loading") {
+		let timeLeftDiv = document.createElement("div")
+		timeLeftDiv.classList.add("timeLeft")
+		toastContainer.appendChild(timeLeftDiv)
+	}
 
 	container.appendChild(toastContainer)
 

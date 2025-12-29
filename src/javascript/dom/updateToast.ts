@@ -1,6 +1,7 @@
 import type { ToastOptions } from "../../types/toast.js"
 import { whatIcon } from "../core/createToast.ts"
 import { deleteToast } from "../core/deleteToast.ts"
+import { startTimer } from "../core/timeManagement.ts"
 import { renderIcon } from "../renderers/index.ts"
 import { getState } from "../state.ts"
 import { $ } from "../utils/helpers.ts"
@@ -18,6 +19,12 @@ export function updateToast(
 
 	const { styles } = toast!.options
 	setStyles({ ...styles, ...options.styles }, toastDiv!)
+
+	let timeLeftDiv = document.createElement("div")
+	timeLeftDiv.classList.add("timeLeft")
+	toastDiv!.appendChild(timeLeftDiv)
+
+	startTimer(toast!)
 
 	//prettier-ignore
 	toastDiv!.classList.replace(`toast-${toast!.options.type}`,`toast-${options.type}`)
