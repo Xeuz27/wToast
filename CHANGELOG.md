@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/Xeuz27/wToast/compare/v0.1.7...v0.1.8) (2025-12-29)
+
+### Fixed
+
+- animate loading toast icon y cambio de iconos ([8bedc73](https://github.com/Xeuz27/wToast/commit/8bedc735b7cd7369199e9e1142211b2a8f53b3b9))
+- toast de promesas no deberian tener un timer, el timer empieza a la resolucion de la promesa ([b7a7cdc](https://github.com/Xeuz27/wToast/commit/b7a7cdcae4070104d39fc70560b263b701023215))
+
 ### 0.1.7 (2025-12-28)
 
 ### Fixed
