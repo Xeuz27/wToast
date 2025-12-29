@@ -12,8 +12,8 @@ importers:
         specifier: ^4.1.16
         version: 4.1.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2))
       '@yidev/wtoast':
-        specifier: ^0.1.8
-        version: 0.1.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^0.1.9
+        version: 0.1.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       astro:
         specifier: ^5.11.0
         version: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.5)(typescript@5.9.3)
@@ -639,8 +639,8 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@yidev/wtoast@0.1.8':
-    resolution: {integrity: sha512-n9ckGJ21yaZGuJllPaCrYwGPCSTka+bZNia0evgZexrl0bKL5FmL5zTMj3ebeBL5TmdDdfBGQCi4kKzUX7/VAA==}
+  '@yidev/wtoast@0.1.9':
+    resolution: {integrity: sha512-xtE09E81DcXYdBhQMAssNzkr99dkRi1UcvtvXkOza48qX9p7oe+MHL49i7RtF+1CMSuDMupMw4lwqbeEPcmRpQ==}
     peerDependencies:
       react: ^18.2.0 || ^19.2.1
       react-dom: ^18.2.0 || ^19.2.1
@@ -2199,7 +2199,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@yidev/wtoast@0.1.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@yidev/wtoast@0.1.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
