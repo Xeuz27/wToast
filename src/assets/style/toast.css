@@ -17,10 +17,10 @@
 	outline: 2px solid oklch(37.4% 0.01 67.558);
 	color: oklch(37.4% 0.01 67.558);
 	max-width: fit-content;
-	color: white;
 	padding: 0.75rem 1rem;
 	border-radius: 4px;
 	font-size: 1rem;
+	font-weight: 600;
 	animation: fadeIn 0.3s ease-out;
 	word-break: break-all;
 	position: relative;
@@ -39,15 +39,19 @@
 
 .toast-success {
 	width: 100%;
-	background: #4caf50;
+	color: #0d7811;
 }
 .toast-error {
 	width: 100%;
-	background: #f44336;
+	color: #86160e;
 }
 .toast-info {
 	width: 100%;
-	background: #2196f3;
+	color: #115389;
+}
+.toast-warning {
+	width: 100%;
+	color: #b86807;
 }
 .toast-title {
 	align-self: center;
@@ -83,6 +87,10 @@
 	.toast-info {
 		width: 100%;
 		background: #092c48;
+	}
+	.toast-warning {
+		width: 100%;
+		background: #924900;
 	}
 }
 

@@ -1,17 +1,20 @@
 import type { Toast, ToastOptions } from "../../types/toast.js"
 
-import { arrowLoad } from "../../assets/icons/arrow-load.ts"
-import { circleCheck } from "../../assets/icons/circle-check-big.ts"
 import { error } from "../../assets/icons/error.ts"
-import { ok } from "../../assets/icons/ok.ts"
+import { info } from "../../assets/icons/info.ts"
+import { loading } from "../../assets/icons/loading.ts"
+import { success } from "../../assets/icons/success.ts"
+import { warning } from "../../assets/icons/warning.ts"
 import { renderToast } from "../dom/renderToast.ts"
 import { addToastToState } from "../state.ts"
 
 export const whatIcon = (type: string) => {
 	let icon: any = {
-		default: ok,
-		loading: arrowLoad,
-		success: circleCheck,
+		default: "",
+		info: info,
+		warning: warning,
+		loading: loading,
+		success: success,
 		error: error,
 	}
 	//pasar 3 iconos en promesa, 1 solo en show?
@@ -29,7 +32,7 @@ export function createToast(message: string, options: ToastOptions = {}) {
 			type: options.type || "default",
 			duration: options.duration || 3000,
 			className: options.className || "",
-			icon: whatIcon(options.type || "default"),
+			icon: options.icon || whatIcon(options.type || "default"),
 			styles: options.styles || {},
 		},
 		rendered: false,

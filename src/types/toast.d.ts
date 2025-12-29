@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 
-export type ToastType = "success" | "error" | "loading" | "default"
+export type ToastType = "success" | "error" | "loading" | "default" | "info" | "warning"
 //prettier-ignore
 export type ToastPositions =  "bottom-left" | "bottom-right" | "top-left" | "top-right"
 
