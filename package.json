@@ -23,6 +23,7 @@
 		"format": "prettier --write .",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup",
+		"tagg": "git tag v$(node -p \"require('./package.json').version\") && git push origin v$(node -p \"require('./package.json').version\")",
 		"release": "standard-version"
 	},
 	"devDependencies": {
@@ -68,6 +69,9 @@
 		]
 	},
 	"standard-version": {
+		"skip": {
+			"commit": true
+		},
 		"types": [
 			{
 				"type": "feat",
