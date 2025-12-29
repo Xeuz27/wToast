@@ -198,7 +198,7 @@ Explicar cómo funciona la detección de framework en futuro
 - - [ ] soportar react on componentes de jsx
 - - - [ ] soportar otros frameworks
 
-- [ ] - mostrar el tiempo que le queda vivo al toast (css )
+- [x] - mostrar el tiempo que le queda vivo al toast (css )
 - [ ] - boton de eliminar toast
 - - [ ] - gesto de eliminar toast?
 

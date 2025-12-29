@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.16",
-		"@yidev/wtoast": "^0.1.7",
+		"@yidev/wtoast": "^0.1.8",
 		"astro": "^5.11.0",
 		"tailwindcss": "^4.1.16"
 	}

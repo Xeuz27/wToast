@@ -36,7 +36,32 @@ import Button from "./Button.astro"
 			// var svg = document.createElement("div")
 			// svg.innerHTML = loading
 			// svg.className = "text-white mr-2"
-			show("show", {
+			show("default", {
+				type: "default",
+				// icon: loading,
+				// icon: loading2,
+				duration: 3000,
+			})
+			show("info", {
+				type: "info",
+				// icon: loading,
+				// icon: loading2,
+				duration: 3000,
+			})
+			show("success", {
+				type: "success",
+				// icon: loading,
+				// icon: loading2,
+				duration: 3000,
+			})
+			show("error", {
+				type: "error",
+				// icon: loading,
+				// icon: loading2,
+				duration: 3000,
+			})
+			show("warning", {
+				type: "warning",
 				// icon: loading,
 				// icon: loading2,
 				duration: 3000,
@@ -54,7 +79,6 @@ import Button from "./Button.astro"
 					success: "exito",
 				},
 				{
-					type: "error",
 					// icon: loading2,
 					duration: 3000,
 				}
