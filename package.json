@@ -1,6 +1,6 @@
 {
 	"name": "@yidev/wtoast",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -12,9 +12,11 @@
 	],
 	"exports": {
 		".": {
+			"require": "./dist/index.cjs",
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js"
 		},
+		"./cdn": "./dist/cdn/index.js",
 		"./dist/index.css": "./dist/index.css",
 		"./index.css": "./dist/index.css"
 	},
@@ -25,7 +27,6 @@
 		"format": "prettier --write .",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup",
-		"prepublishOnly": "npm run build",
 		"tagg": "git tag v$(node -p \"require('./package.json').version\") && git push origin v$(node -p \"require('./package.json').version\")",
 		"release": "standard-version"
 	},

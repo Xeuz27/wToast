@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/Xeuz27/wToast/compare/v0.1.9...v0.1.10) (2026-01-12)
+
+
+### Added
+
+* soporte de uso a traves de cdn con multiples buids ([960a46a](https://github.com/Xeuz27/wToast/commit/960a46a36b92126190f1ff22fbac8cc83039118c))
+* uso de frameworkds como react es ahora dinamico ([3eff960](https://github.com/Xeuz27/wToast/commit/3eff96081f058b6c85c6a2ce06828f1e96f0ea30))
+
 ### [0.1.9](https://github.com/Xeuz27/wToast/compare/v0.1.8...v0.1.10) (2025-12-29)
 
 ### Fixed
