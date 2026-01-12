@@ -27,6 +27,7 @@
 		"format": "prettier --write .",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "tsup",
+		"prepublishOnly": "npm run build && npm run pack",
 		"tagg": "git tag v$(node -p \"require('./package.json').version\") && git push origin v$(node -p \"require('./package.json').version\")",
 		"release": "standard-version"
 	},
