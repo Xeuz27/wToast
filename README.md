@@ -82,33 +82,100 @@ Metodos encadenables:
 // onReject(config: ToastOptions, callback: (error: Error) => void): this
 ```
 
-## 📦 Uso en frameworks
+## 📦 Uso en distintos entornos
 
-### 🕶 Javascript
+### 🛠 Javascript
 
-```js
-import { wToast } from "@yidev/wtoast"
-const { show } = wToast()
-//styles/index.css
-import "@yidev/wtoast/index.css"
+```html
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yidev/wtoast@latest/dist/cdn/index.css" />
+	</head>
+	<body>
+		<button class="some-class">Boton</button>
+	</body>
+</html>
+<!-- script must be of type module -->
+<script type="module">
+	const { wToast } = await import("https://cdn.jsdelivr.net/npm/@yidev/wtoast@latest/dist/cdn/index.js")
+	const { show } = wToast()
 
-show("show", {
-	duration: 3000,
-})
+	document.querySelector(".some-class").addEventListener("click", () => {
+		show("click")
+	})
+</script>
 ```
 
 ### 🌟 Astro
 
 Funciona sin configuración adicional.
 
-```ts
+```astro
 ---
-import { wToast } from '@yidev/wtoast'
+const { text, id } = Astro.props
 import '@yidev/wtoast/index.css'
-const { show } = wToast()
 ---
 
-<button onclick="show('Hola desde Astro!')">Toast</button>
+
+<button id='algun-id' class='btn'>alguna Accion</button>
+
+<script>
+	import { wToast } from '@yidev/wtoast'
+	const { show, promise } = wToast()
+
+	document.getElementById("algun-id").addEventListener("click", () => {
+		show("toast para alguna accion", {
+			type: "info",
+			duration: 2500,
+		})
+	})
+</script>
+```
+
+si usas navegacion en tu sitio web tienes que envolver tus eventos en astro:page-load de el componente <ClientRouter/>
+como se especifica en [manejo de scripts con view transitions](https://docs.astro.build/es/guides/view-transitions/#script-behavior-with-view-transitions)
+
+```astro
+---
+import {ClientRouter} from 'astro:transitions'
+---
+<!-- index.astro -->
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>Astro</title>
+	<ClientRouter />
+</head>
+```
+
+```astro
+---
+const { text, id } = Astro.props
+import '@yidev/wtoast/index.css'
+---
+
+<button id='algun-id' class='btn'>alguna promesa</button>
+
+<script>
+	import { wToast } from '@yidev/wtoast'
+	const { show, promise } = wToast()
+
+	document.addEventListener("astro:page-load", () => {
+
+		document.getElementById("algun-id")?.addEventListener("click", () => {
+			promise(fetch("/api"), {
+				loading: "Cargando promesa...",
+				success: "Promesa resuelta 🎉",
+				error: "Error en promesa 😞",
+			})
+			.onResolve((data) => console.log(data))
+			.onReject((err) => console.error(err))
+		})
+
+	})
+</script>
 ```
 
 ### ⚛️ React
@@ -122,6 +189,16 @@ export default function Button() {
 	return <button onClick={() => show("Hola React!")}>Toast</button>
 }
 ```
+
+## 🤝 Contribuir
+
+¡Gracias por querer ayudar! Puedes contribuir mediante:
+
+- Issues: reportando bugs o sugerencias
+- Pull Requests: si quieres proponer cambios
+- Revisar el roadmap / todos para ver áreas que necesitan ayuda
+
+Por favor, lee las notas de estilo de código y sigue la convención de commits `conventional commits`.
 
 ## roadmap / to do
 
@@ -153,26 +230,7 @@ export default function Button() {
 - [ ] Revisar tipados finales
 - [ ] Asegurar que promise.run() no duplique ejecuciones
 
-## ✨ Qué podría agregarse a la documentación
-
-Te recomiendo añadir:
-
-### 🔹 Sección de “Características”
-
-Sin dependencias
-Ligero
-Soporta JSX sin React en bundle
-Lazy rendering
-Permite múltiples toasts
-.promise() API tipo “toast.promise” de otras libs
-
-### 🔹 Sección de “Limitaciones actuales”
-
-JSX solo en React por ahora
-No hay yet soporte para SSR
-No hay animaciones personalizadas todavía
-
-### 🔹 Sección de “Ejemplos avanzados”
+### 🔹Ejemplos avanzados
 
 Cómo cambiar posición global
 Cómo personalizar con CSS variables
@@ -181,7 +239,7 @@ Cómo hacer un theme (light/dark)
 
 ### 🔹 Notas técnicas
 
-Explicar que JSX se valida sin ejecutarse
+?Explicar que JSX se valida sin ejecutarse
 Explicar que React se carga de manera dinámica
 Explicar cómo funciona la detección de framework en futuro
 
@@ -214,3 +272,9 @@ Explicar cómo funciona la detección de framework en futuro
 - [ ] - usar formatter
 - [ ] - hacer test
 - [ ] - crear un c/i
+
+- [x?] - uso de cdn / y objeto window?
+- [ ] - hacer los toast clickables con un onclick
+- [ ] - permitir cambiar posicion global
+- [ ] - animaciones personalizadas (?)
+- [ ] - hacer mejores ejemplos

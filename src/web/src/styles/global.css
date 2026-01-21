@@ -1,8 +1,10 @@
 @import "tailwindcss";
-@import "../../../assets/style/toast.css";
-/* @import "@yidev/wtoast/index.css"; */
+@import "@yidev/wtoast/index.css" layer(base);
 @config "../../tailwind.config.mjs";
 
+.toasts-container {
+	gap: 12px;
+}
 @layer base {
 	.prose code,
 	.astro-code {
@@ -16,11 +18,14 @@
 	.prose h4,
 	.prose h5,
 	.prose h6 {
-		@apply text-base font-bold text-white mb-4 sm:text-lg md:text-3xl;
+		@apply text-base font-bold text-white mb-3 mt-6 sm:text-lg md:text-3xl;
 	}
 	.prose p,
 	.prose li {
-		@apply text-sm tracking-wide text-white sm:text-base mb-6 md:text-lg;
+		@apply text-sm tracking-wide text-white sm:text-base mb-2 md:text-lg;
+	}
+	.prose a {
+		@apply text-blue-400 underline-offset-2 decoration-1 underline decoration-blue-400;
 	}
 	/* .prose a {
 		@apply text-blue-600 !underline decoration-blue-600 decoration-solid underline-offset-2;
@@ -30,7 +35,5 @@
 	}
 }
 body {
-	font-family:
-		"Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

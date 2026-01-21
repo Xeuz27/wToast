@@ -17,10 +17,10 @@ import Button from "./Button.astro"
 		<Button text="Promesa" id="toast-promesa" />
 	</div>
 </main>
-<script>
-	import { wToast } from "@yidev/wtoast"
+<script type="module" is:inline>
+	const { wToast } = await import("https://cdn.jsdelivr.net/npm/@yidev/wtoast@latest/dist/cdn/index.js")
 	let trueOrFalse = 1
-	export const sleep = async (ms: number) => {
+	export const sleep = async (ms) => {
 		if (trueOrFalse % 2 === 0) {
 			trueOrFalse += 1
 			await new Promise((resolve, reject) => setTimeout(reject, ms))
@@ -36,8 +36,10 @@ import Button from "./Button.astro"
 			// var svg = document.createElement("div")
 			// svg.innerHTML = loading
 			// svg.className = "text-white mr-2"
-			show("default", {
+			show("mensaje default", {
 				type: "default",
+				className: "outline-4 text-center",
+				title: "Titulo",
 				// icon: loading,
 				// icon: loading2,
 				duration: 3000,
@@ -54,8 +56,9 @@ import Button from "./Button.astro"
 				// icon: loading2,
 				duration: 3000,
 			})
-			show("error", {
+			show("la operacion fallo por...", {
 				type: "error",
+				title: "Error",
 				// icon: loading,
 				// icon: loading2,
 				duration: 3000,
@@ -67,22 +70,21 @@ import Button from "./Button.astro"
 				duration: 3000,
 			})
 		})
+
 		document.getElementById("toast-promesa")?.addEventListener("click", () => {
 			// var svg = document.createElement("div")
 			// svg.innerHTML = loading
 			// svg.className = "text-white mr-2"
-			promise(
-				sleep(1000),
-				{
-					error: "error",
-					loading: "cargando",
-					success: "exito",
-				},
-				{
-					// icon: loading2,
-					duration: 3000,
-				}
-			)
+			promise(sleep(1500), {
+				loading: "Cargando promesa...",
+				success: "Promesa resuelta 🎉",
+				error: "Error en promesa 😞",
+			})
+				//el timer no se pausa on hover?
+				//@ts-ignore
+				.onResolve((data) => console.log(data))
+				//@ts-ignore
+				.onReject((err) => console.error(err))
 		})
 	})
 </script>
