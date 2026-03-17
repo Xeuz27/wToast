@@ -1,6 +1,5 @@
 import type { ToastOptions } from "../../types/toast.js"
 import { whatIcon } from "../core/createToast.ts"
-import { deleteToast } from "../core/deleteToast.ts"
 import { startTimer } from "../core/timeManagement.ts"
 import { renderIcon } from "../renderers/index.ts"
 import { getState } from "../state.ts"
@@ -61,9 +60,4 @@ export function updateToast(
 	toastDiv!.querySelector("p.toast-message")!.textContent = message
 	toast!.message = message
 	toast!.options = options
-
-	setTimeout(
-		() => deleteToast(id),
-		(options.duration || toast?.options.duration || 0) + 1500
-	)
 }
