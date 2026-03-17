@@ -43,7 +43,7 @@ export const startTimer = (toast: Toast) =>
 
 export const pauseTimer = (toastId: string) => {
 	let timer = timers[toastId]
-	if (!timer) return
+	if (timer === undefined) return
 
 	if (!timer.originalDuration) {
 		timer.originalDuration = timer.duration
@@ -53,8 +53,7 @@ export const pauseTimer = (toastId: string) => {
 }
 export const resumeTimer = (toastId: string) => {
 	let timer = timers[toastId]
-	if (!timer) return
-
+	if (timer === undefined) return
 	timer.interval = setInterval(() => {
 		timer.remaining = timer.remaining! - intervalo
 		//prettier-ignore
@@ -70,7 +69,7 @@ export const resumeTimer = (toastId: string) => {
 }
 export const stopTimer = (toastId: string) => {
 	let timer = timers[toastId]
-	if (!timer) return
+	if (timer === undefined) return
 
 	deleteToast(toastId)
 	clearInterval(timer.interval)
