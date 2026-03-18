@@ -1,4 +1,6 @@
+import Hammer from "hammerjs"
 import type { Toast } from "../../types/toast.js"
+import { whatIcon } from "../core/createToast.ts"
 import { pauseTimer, resumeTimer, stopTimer } from "../core/timeManagement.ts"
 import { renderIcon, toastUnmounts } from "../renderers/index.ts"
 import { createContainer } from "./createContainer.ts"
@@ -6,6 +8,7 @@ import { setStyles } from "./styling.ts"
 
 export async function renderToast(toast: Toast) {
 	if (toast.rendered) return
+	const { options } = toast
 	const container =
 		document.querySelector(".toasts-container") || createContainer()
 
@@ -23,16 +26,46 @@ export async function renderToast(toast: Toast) {
 	toastContainer.addEventListener("mouseleave", () => {
 		resumeTimer(toast.id)
 	})
-	toastContainer.addEventListener("click", () => {
-		//agregar icono de cerrar xd
-		stopTimer(toast.id)
-	})
+	// toastContainer.addEventListener("click", () => {
+	// 	// console.log("click en el toast")
+	// 	// onclick()
+	// })
 	//isolar
 	//isolar
 	//isolar
 
 	const { styles } = toast.options
 	setStyles(styles, toastContainer)
+
+	if (options.close !== "none") {
+		if (options.close === "button" || options.close === "both") {
+			const close = document.createElement("div")
+			close.className = "close-button"
+			renderIcon(whatIcon("close"), close)
+
+			close.addEventListener("click", (event) => {
+				event.stopPropagation()
+				stopTimer(toast.id)
+			})
+
+			toastContainer.appendChild(close)
+		}
+
+		if (options.close === "swipe" || options.close === "both") {
+			const hammer = new Hammer(toastContainer)
+			hammer.on("swipeleft swiperight", (event) => {
+				if (event.type === "swipeleft") {
+					toastContainer.classList.add("fade-out-left")
+				}
+				if (event.type === "swiperight") {
+					toastContainer.classList.add("fade-out-right")
+				}
+				setTimeout(() => {
+					stopTimer(toast.id)
+				}, 300)
+			})
+		}
+	}
 
 	if (toast.options.icon) {
 		const toastIcon = document.createElement("span")

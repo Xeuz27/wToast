@@ -252,13 +252,13 @@ Explicar cómo funciona la detección de framework en futuro
 - - [x] - eliminar dicho titulo si no existe en los options de update toast
 
 - [x] - mostrar iconos en los toast de error o exito
-- - [ ] - actualizar icono en succs o fail
+- - [x] - actualizar icono en succs o fail
 - - [ ] soportar react on componentes de jsx
 - - - [ ] soportar otros frameworks
 
 - [x] - mostrar el tiempo que le queda vivo al toast (css )
-- [ ] - boton de eliminar toast
-- - [ ] - gesto de eliminar toast?
+- [x] - boton de eliminar toast
+- - [x] - gesto de eliminar toast?
 
 - [?] - crear una documentacion sencilla
 - [ ] - crear una web sencilla
