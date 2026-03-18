@@ -1,5 +1,6 @@
 import type { Toast, ToastOptions } from "../../types/toast.js"
 
+import { close } from "../../assets/icons/close.ts"
 import { error } from "../../assets/icons/error.ts"
 import { info } from "../../assets/icons/info.ts"
 import { loading } from "../../assets/icons/loading.ts"
@@ -16,6 +17,7 @@ export const whatIcon = (type: string) => {
 		loading: loading,
 		success: success,
 		error: error,
+		close: close,
 	}
 	//pasar 3 iconos en promesa, 1 solo en show?
 	let rawSVG = icon[type]
@@ -34,6 +36,7 @@ export function createToast(message: string, options: ToastOptions = {}) {
 			className: options.className || "",
 			icon: options.icon || whatIcon(options.type || "default"),
 			styles: options.styles || {},
+			close: options.close || "none",
 		},
 		rendered: false,
 	}

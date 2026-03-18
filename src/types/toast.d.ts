@@ -1,8 +1,10 @@
 import type { JSX } from "react"
 
 export type ToastType = "success" | "error" | "loading" | "default" | "info" | "warning"
-//prettier-ignore
-export type ToastPositions =  "bottom-left" | "bottom-right" | "top-left" | "top-right"
+
+export type ToastPositions = "bottom-left" | "bottom-right" | "top-left" | "top-right"
+
+export type closeOptions = "button" | "swipe" | "both" | "none"
 
 export type ToastStyles = Partial<CSSStyleDeclaration> & {
 	[key: string]: string | undefined
@@ -20,6 +22,7 @@ export type ToastOptions = {
 	className?: string
 	icon?: HTMLElement | string | any | JSX.Element
 	styles?: ToastStyles
+	close?: closeOptions
 }
 
 export type ToastDefaults = {
