@@ -217,11 +217,11 @@ Por favor, lee las notas de estilo de código y sigue la convención de commits 
 - [ ] Soporte para más frameworks (Svelte, Vue, Solid)
 - [x] Mostrar barra de progreso del tiempo restante
 - [x] actualizar icono en promesa()
-- [ ] en onresolve/onreject?
+- [x] en onresolve/onreject?
 - - [x] detener en hover
 - - [x] resumir depsues del hover
-- [ ] Botón para cerrar manualmente
-- [ ] Gestos para eliminar (swipe)
+- [x] Botón para cerrar manualmente
+- [x] Gestos para eliminar (swipe)
 - [x?] Documentación mejorada en web / Página de ejemplo/demo
 - [x] changelog
 - [ ] Tests unitarios
