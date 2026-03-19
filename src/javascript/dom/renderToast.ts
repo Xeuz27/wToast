@@ -26,10 +26,13 @@ export async function renderToast(toast: Toast) {
 	toastContainer.addEventListener("mouseleave", () => {
 		resumeTimer(toast.id)
 	})
-	// toastContainer.addEventListener("click", () => {
-	// 	// console.log("click en el toast")
-	// 	// onclick()
-	// })
+
+	if (options.onClick) {
+		toastContainer.addEventListener("click", () => {
+			options.onClick!()
+		})
+	}
+
 	//isolar
 	//isolar
 	//isolar

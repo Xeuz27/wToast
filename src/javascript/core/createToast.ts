@@ -37,6 +37,7 @@ export function createToast(message: string, options: ToastOptions = {}) {
 			icon: options.icon || whatIcon(options.type || "default"),
 			styles: options.styles || {},
 			close: options.close || "none",
+			onClick: options.onClick,
 		},
 		rendered: false,
 	}

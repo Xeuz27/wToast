@@ -23,6 +23,7 @@ export type ToastOptions = {
 	icon?: HTMLElement | string | any | JSX.Element
 	styles?: ToastStyles
 	close?: closeOptions
+	onClick?: (() => void) | undefined
 }
 
 export type ToastDefaults = {
