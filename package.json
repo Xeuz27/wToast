@@ -43,8 +43,10 @@
 		"tsup": "^8.5.0",
 		"typescript": "^5.9.3"
 	},
+	"dependencies": {
+		"hammerjs": "2.0.8"
+	},
 	"peerDependencies": {
-		"hammerjs": "2.0.8",
 		"react": "^18.2.0 || ^19.2.1",
 		"react-dom": "^18.2.0 || ^19.2.1"
 	},
