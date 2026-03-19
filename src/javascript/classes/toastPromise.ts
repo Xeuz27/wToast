@@ -10,8 +10,8 @@ export class toastPromise<T> {
 	private onResolveConfig: ToastOptions
 	private onRejectConfig: ToastOptions
 
-	private onResolveCallback?: (data: any) => void
-	private onRejectCallback?: (error: Error) => void
+	private onResolveCallback: ((data: any) => void) | undefined
+	private onRejectCallback: ((error: Error) => void) | undefined
 
 	constructor(
 		promise: Promise<T>,
@@ -28,8 +28,8 @@ export class toastPromise<T> {
 		this.onResolveConfig = onResolveConfig || {}
 		this.onRejectConfig = onRejectConfig || {}
 
-		this.onResolveCallback = this.onResolveCallback || function () {}
-		this.onRejectCallback = this.onRejectCallback || function () {}
+		this.onResolveCallback = this.onResolveCallback
+		this.onRejectCallback = this.onRejectCallback
 
 		// no ejecutar despues de los tiempos de sleep()
 		this.run()
